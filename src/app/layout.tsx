@@ -15,6 +15,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "에제르 화실 회원전",
   description: "화실 에제르 회원들이 준비한 특별한 전시회가 열립니다.",
+  openGraph: {
+    title: "에제르 화실 회원전",
+    description: "화실 에제르 회원들이 준비한 특별한 전시회가 열립니다.",
+    url: "https://ezer-invitation.vercel.app/",
+    images: [
+      {
+        url: "/images/thumbnail.png",
+        width: 800,
+        height: 600,
+        alt: "전시회 썸네일",
+      },
+    ],
+    siteName: "에제르 화실",
+  },
 };
 
 export default function RootLayout({
