@@ -1,34 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "에제르 화실 회원전",
   description: "화실 에제르 회원들이 준비한 특별한 전시회가 열립니다.",
-  openGraph: {
-    title: "에제르 화실 회원전",
-    description: "화실 에제르 회원들이 준비한 특별한 전시회가 열립니다.",
-    url: "https://ezer-invitation.vercel.app/",
-    images: [
-      {
-        url: "/images/thumbnail.png",
-        width: 800,
-        height: 600,
-        alt: "전시회 썸네일",
-      },
-    ],
-    siteName: "에제르 화실",
-  },
 };
 
 export default function RootLayout({
@@ -38,11 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <head>
+        <Script
+          type="text/javascript"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_KEY}&libraries=services,clusterer&autoload=false`}
+          strategy="beforeInteractive"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
